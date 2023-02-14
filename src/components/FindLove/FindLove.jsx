@@ -44,6 +44,7 @@ function FindLove() {
                 <Card.Img variant="top" src={profile.picture.large}></Card.Img>
                 <Card.Title>{profile.name.first} {profile.name.last}</Card.Title>
                 <Card.Text >{profile.location.city}, {profile.location.country}</Card.Text>
+                <Card.Text>{profile.dob.age}</Card.Text>
             </Card>)}
             <Button onClick={showNextFivePeople}>Next</Button>
         </div>
