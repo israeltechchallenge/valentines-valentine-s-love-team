@@ -1,16 +1,15 @@
 import { useEffect, useState, useContext } from "react";
 import { Button, Card } from "react-bootstrap";
-import UserContext
- from "../../contexts/UserContext";
+import UserContext from "../../contexts/UserContext";
+
 function FindLove() {
     const [ datingProfilesArr, setDatingProfilesArr ] = useState([])
+    const [ genderPreference, setGenderPreference] = useState('')
     const [ visitbleDatingProfilesArr, setVisibleDatingProfilesArr ] = useState([])
 
-    const {user, setUser} = useContext(UserContext)
-    console.log(user)
-    
-    let genderPref = 'female';
-    const profilesAPI = `https://randomuser.me/api/?results=50&gender=${genderPref}`;
+    const {user} = useContext(UserContext)  
+
+    const profilesAPI = `https://randomuser.me/api/?results=50&gender=${genderPreference}`;
     useEffect(() => {
         // try{
         // fetch(profilesAPI)
@@ -21,6 +20,11 @@ function FindLove() {
         // } catch(err){
         //     console.error(err)
         // }
+        if (user.interestedIn === 'men') {
+            setGenderPreference('male')
+        } else if (user.interestedIn === 'female') {
+            setGenderPreference('female')
+        }
 
         fetchDatingProfiles()
     }, [])
