@@ -7,15 +7,17 @@ function FindLove() {
     let genderPref = 'female';
     const profilesAPI = `https://randomuser.me/api/?results=50&gender=${genderPref}`;
     useEffect(() => {
-        try{
-        fetch(profilesAPI)
-        .then((response) => response.json())
-        .then((data) => {
-            sliceProfilesArray(data.results)
-        })
-        } catch(err){
-            console.error(err)
-        }
+        // try{
+        // fetch(profilesAPI)
+        // .then((response) => response.json())
+        // .then((data) => {
+        //     sliceProfilesArray(data.results)
+        // })
+        // } catch(err){
+        //     console.error(err)
+        // }
+
+        fetchDatingProfiles()
     }, [])
 
     const fetchDatingProfiles = async () => {
