@@ -9,16 +9,13 @@ function FindLove() {
     const [ sliceStart, setSliceStart ] = useState(0)
     const [ sliceEnd, setSliceEnd ] = useState(5)
     const {user} = useContext(UserContext)  
-    console.log(user)
     const profilesAPI = `https://randomuser.me/api/?results=50&gender=${genderPreference}`;
     useEffect(() => {
-        if (user.interestedIn === 'men') {
+        if (user.interestedIn === 'Men' || "men") {
             setGenderPreference('male')
-        } else if (user.interestedIn === 'female') {
+        } else if (user.interestedIn === 'female' || 'Female') {
             setGenderPreference('female')
         }
-        console.log('user', user)
-
         fetchDatingProfiles()
     }, [])
 
