@@ -9,7 +9,6 @@ function App() {
   return (
     <UserContext.Provider value={{user, setUser}}>
       <div className="App">
-        <Login></Login>
       </div>
     </UserContext.Provider>
   );
