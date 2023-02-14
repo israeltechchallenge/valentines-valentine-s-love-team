@@ -1,0 +1,19 @@
+.about-page {
+  width: 70%;
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+}
+
+.pics-team {
+  width: 200px;
+  height: auto;
+}
+
+.person1 {
+  float: left;
+}
+
+.person2 {
+  float: right;
+}
