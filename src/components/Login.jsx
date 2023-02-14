@@ -1,13 +1,27 @@
-import { useContext, useState } from "react"
+import { useContext, useEffect, useState } from "react"
 import UserContext from "../contexts/UserContext"
 
 function Login(){
     const [formInfo, setFormInfo] = useState({
-        name: "",
-        age: 1,
+        name: "What's your name?",
+        age: 18,
         gender: "Male",
         interestedIn: "Men"})
-    // const {user, setUser} = useContext(UserContext)
+    const [isNameError, setIsNameError] = useState(false)
+    const [isAgeError, setIsAgeError] = useState(false)
+    const {user, setUser} = useContext(UserContext)
+
+    useEffect(() => {
+        console.log(formInfo.name, formInfo.age)
+        if(formInfo.name === ""){
+            setIsNameError(true)
+        }else if(formInfo.age < 18){
+            setIsAgeError(true)
+        }else{
+            setIsAgeError(false)
+            setIsNameError(false)
+        }
+    }, [formInfo])
 
     return(
         <div className="login-main-div">
@@ -21,7 +35,14 @@ function Login(){
                 <option value="men">Men</option>
                 <option value="women">Women</option>
             </select>
-            <button>Login</button>
+            <h2 style={{display: isNameError ? "block" : "none"}}>You must enter a name to login!</h2>
+            <h2 style={{display: isAgeError ? "block" : "none"}}>You must be 18 or over to use this service!</h2>
+            <button onClick={() => {
+                if(!(isAgeError || isNameError)){
+                    setUser(formInfo)
+                    console.log(formInfo)
+                }
+            }}>Login</button>
         </div>
     )
 }
