@@ -2,29 +2,22 @@ import { useEffect, useState, useContext } from "react";
 import { Button, Card } from "react-bootstrap";
 import UserContext from "../../contexts/UserContext";
 
+
 function FindLove() {
-    const [ datingProfilesArr, setDatingProfilesArr ] = useState([])
-    const [ genderPreference, setGenderPreference] = useState('')
-    const [ visitbleDatingProfilesArr, setVisibleDatingProfilesArr ] = useState([])
-
+    const [ datingProfilesArr, setDatingProfilesArr ] = useState([]);
+    const [ genderPreference, setGenderPreference] = useState('');
+    const [ sliceStart, setSliceStart ] = useState(0)
+    const [ sliceEnd, setSliceEnd ] = useState(5)
     const {user} = useContext(UserContext)  
-
+    console.log(user)
     const profilesAPI = `https://randomuser.me/api/?results=50&gender=${genderPreference}`;
     useEffect(() => {
-        // try{
-        // fetch(profilesAPI)
-        // .then((response) => response.json())
-        // .then((data) => {
-        //     sliceProfilesArray(data.results)
-        // })
-        // } catch(err){
-        //     console.error(err)
-        // }
         if (user.interestedIn === 'men') {
             setGenderPreference('male')
         } else if (user.interestedIn === 'female') {
             setGenderPreference('female')
         }
+        console.log('user', user)
 
         fetchDatingProfiles()
     }, [])
@@ -34,23 +27,28 @@ function FindLove() {
         const data = await response.json();
         console.log(data)
         setDatingProfilesArr(data.results);
-        sliceProfilesArray();
     }
 
-    const sliceProfilesArray = () => {
-        setVisibleDatingProfilesArr(datingProfilesArr.slice(0,5))
+    const showPrevFivePeople = () => {
+        setSliceStart(sliceStart - 5)
+        setSliceEnd(sliceEnd - 5)
+    }
+
+    const showNextFivePeople = () => {
+        setSliceStart(sliceStart + 5)
+        setSliceEnd(sliceEnd + 5)
     }
 
     return(
         <div>
-            <Button>Prev</Button>
-            {visitbleDatingProfilesArr.map((profile)=> 
+            <Button onClick={showPrevFivePeople}>Prev</Button>
+            {datingProfilesArr.slice(sliceStart,sliceEnd).map((profile)=> 
             <Card key={profile.dob.date}>
                 <Card.Img variant="top" src={profile.picture.large}></Card.Img>
                 <Card.Title>{profile.name.first} {profile.name.last}</Card.Title>
-                <Card.Text>{profile.location.city}, {profile.location.country}</Card.Text>
+                <Card.Text >{profile.location.city}, {profile.location.country}</Card.Text>
             </Card>)}
-            <Button>Next</Button>
+            <Button onClick={showNextFivePeople}>Next</Button>
         </div>
     )
 }
