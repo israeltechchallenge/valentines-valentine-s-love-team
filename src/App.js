@@ -6,6 +6,7 @@ import Navbar from './components/Navbar'
 import UserContext from './contexts/UserContext';
 import './css/App.css';
 import { Route, Routes } from 'react-router-dom';
+import SuccessStory from './components/SuccessStory';
 
 function App() {
   const [user, setUser] = useState({})
@@ -17,7 +18,7 @@ function App() {
         <Route path="*" element={<Login/>}></Route>
         <Route path="/find-love" element={<FindLove/>}></Route>
         <Route path="/about-team" element={<h1>About Team</h1>}></Route>
-        <Route path="/success-story" element={<h1>Success Story</h1>}></Route>
+        <Route path="/success-story" element={<SuccessStory/>}></Route>
       </Routes>
       </div>
     </UserContext.Provider>
