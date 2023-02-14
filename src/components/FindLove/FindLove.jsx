@@ -1,9 +1,14 @@
-import { useEffect, useState } from "react";
+import { useEffect, useState, useContext } from "react";
 import { Button, Card } from "react-bootstrap";
-
+import UserContext
+ from "../../contexts/UserContext";
 function FindLove() {
     const [ datingProfilesArr, setDatingProfilesArr ] = useState([])
     const [ visitbleDatingProfilesArr, setVisibleDatingProfilesArr ] = useState([])
+
+    const {user, setUser} = useContext(UserContext)
+    console.log(user)
+    
     let genderPref = 'female';
     const profilesAPI = `https://randomuser.me/api/?results=50&gender=${genderPref}`;
     useEffect(() => {
