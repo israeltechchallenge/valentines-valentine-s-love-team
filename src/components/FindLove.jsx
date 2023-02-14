@@ -1,6 +1,6 @@
 import { useEffect, useState, useContext } from "react";
 import { Button, Card } from "react-bootstrap";
-import UserContext from "../../contexts/UserContext";
+import UserContext from "../contexts/UserContext";
 
 
 function FindLove() {
