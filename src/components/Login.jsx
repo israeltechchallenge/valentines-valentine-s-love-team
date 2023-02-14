@@ -1,8 +1,10 @@
 import { useContext, useEffect, useState } from "react"
+import { useNavigate } from "react-router-dom"
 import UserContext from "../contexts/UserContext"
 import '../css/Login.css'
 
 function Login(){
+    const navigate = useNavigate()
     const [formInfo, setFormInfo] = useState({
         name: "",
         age: 18,
@@ -43,7 +45,7 @@ function Login(){
             <button onClick={() => {
                 if(!(isAgeError || isNameError)){
                     setUser(formInfo)
-                    console.log(formInfo)
+                    navigate("/find-love")
                 }
             }}>Login</button>
         </div>

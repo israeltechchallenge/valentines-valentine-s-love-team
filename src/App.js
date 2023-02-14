@@ -1,4 +1,3 @@
-
 import FindLove from './components/FindLove';
 import { useState } from 'react';
 import Login from './components/Login';
@@ -6,7 +5,7 @@ import Navbar from './components/Navbar'
 import UserContext from './contexts/UserContext';
 import './css/App.css';
 import { Route, Routes } from 'react-router-dom';
-import About from "./components/About";
+import About from './components/About'
 
 function App() {
   const [user, setUser] = useState({});
