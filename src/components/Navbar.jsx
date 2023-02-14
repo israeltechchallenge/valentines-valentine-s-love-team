@@ -11,7 +11,7 @@ function Navbar() {
       <Link to="/about-team" className="nav-link">
         About Team
       </Link>
-      <Link to="/success story" className="nav-link">
+      <Link to="/success-story" className="nav-link">
         Success Story
       </Link>
     </div>

@@ -2,6 +2,18 @@
   text-align: center;
 }
 
+html{
+  height: 100%;
+}
+body{
+  height: 100%;
+  margin: 0;
+  background-repeat: no-repeat;
+  background-attachment: fixed;
+  background: rgb(253,41,123);
+  background: linear-gradient(7deg, rgba(253,41,123,1) 33%, rgba(255,88,100,1) 66%, rgba(255,101,91,1) 100%);
+}
+
 .App-logo {
   height: 40vmin;
   pointer-events: none;

@@ -5,10 +5,18 @@
   min-height: 2.5rem;
   width: 80%;
   margin: 0 auto;
-  background-color: cadetblue;
+  background-color: #FFFFFF;
+  border-bottom-left-radius: 6px;
+  border-bottom-right-radius: 6px;
 }
 
 .nav-link {
   text-decoration: none;
   margin: auto 1rem;
+  color: black;
+  padding: 5px;
+  border-radius: 6px;
+}
+.nav-link:hover{
+  background-color: #D3D3D3;
 }
